@@ -2,6 +2,8 @@ package com.test.tictactoe;
 
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GameProcess {
 
@@ -19,9 +21,20 @@ public class GameProcess {
         do {
             System.out.println("Player "+currentPlayer+" turn!");
             System.out.print("input coordinate x= ");
-            int x = scanner.nextInt();
+            String inputX=scanner.next();
             System.out.print("input coordinate y= ");
-            int y = scanner.nextInt();
+            String inputY = scanner.next();
+
+            Pattern pattern = Pattern.compile("[A-Za-z@~`!@#$%^&*()_=+';:?>.<]");
+            Matcher matcherX = pattern.matcher(inputX);
+            Matcher matcherY = pattern.matcher(inputY);
+            if (matcherX.find() || matcherY.find()){
+                System.out.println("Please input Number only");
+                continue;
+            }
+
+            int x = Integer.valueOf(inputX);
+            int y = Integer.valueOf(inputY);
 
             if (validateInput(x,y,boardSize))
                 inputTurn(x,y,dimension);
