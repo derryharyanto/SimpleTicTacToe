@@ -1,10 +1,8 @@
 package com.test.tictactoe;
 
-import org.springframework.stereotype.Service;
 
 import java.util.Scanner;
 
-@Service
 public class GameProcess {
 
     public static String currentPlayer="X";
@@ -15,7 +13,6 @@ public class GameProcess {
         //initialize
         emptySpace=boardSize*boardSize;
         boolean winner=false;
-
         winningStatePlayerX="";
         winningStatePlayerO="";
         initializeBoard(boardSize,dimension);
